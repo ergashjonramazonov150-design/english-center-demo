@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!--
+  Lumora English Center — fictional portfolio project
+  This page is a DEMO. The brand, people, testimonials and contact details are all made up.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Makes the page scale correctly on phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumora English Center | Learn English in Tashkent (Demo Project)</title>
+  <meta name="description" content="A fictional English language learning center in Tashkent, Uzbekistan. Portfolio demo project built with HTML, CSS and vanilla JavaScript.">
+
+  <!-- Free Google Fonts. If you are offline, the page falls back to Georgia / system fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <!-- "defer" = download now, run after the HTML has been read -->
+  <script src="script.js" defer></script>
+</head>
+<body id="top">
+
+  <!-- Accessibility: lets keyboard users jump past the menu -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Demo banner: honest labelling for the portfolio -->
+  <div class="demo-banner">
+    Portfolio demo: Lumora is a fictional center. Nothing on this page is a real offer.
+  </div>
+
+  <!-- ============ 1. NAVIGATION ============ -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="logo" aria-label="Lumora English Center, back to top">
+        <span class="logo-mark" aria-hidden="true">L</span>
+        <span class="logo-text">Lumora <small>English Center</small></span>
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" type="button"
+              aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+      </button>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a class="nav-link" href="#courses">Courses</a></li>
+          <li><a class="nav-link" href="#why-us">Why Us</a></li>
+          <li><a class="nav-link" href="#teachers">Teachers</a></li>
+          <li><a class="nav-link" href="#testimonials">Stories</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+          <li><a class="btn btn-primary btn-small" href="#contact">Free trial</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ 2. HERO ============ -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">English courses in Tashkent</p>
+          <h1 id="hero-title">Speak English with confidence, one conversation at a time.</h1>
+          <p class="hero-lead">
+            Small groups, friendly teachers and practical lessons that get you talking from day one.
+            Whether you study, work or travel, we help you use English in real life.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Book a free trial lesson</a>
+            <a class="btn btn-outline" href="#courses">Explore courses</a>
+          </div>
+          <ul class="hero-facts" aria-label="Quick facts">
+            <li><strong>8</strong> learners max per group</li>
+            <li><strong>3</strong> course tracks</li>
+            <li><strong>6</strong> days a week</li>
+          </ul>
+        </div>
+
+        <!-- Decorative illustration made only with HTML + CSS -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="bubble bubble-one">Hello! How was your weekend?</div>
+          <div class="bubble bubble-two">Great! I practised English at a café.</div>
+          <div class="hero-card">
+            <span class="hero-card-dot"></span>
+            <div>
+              <strong>Speaking Practice</strong>
+              <span>Today · 18:00 · Room 2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. COURSES ============ -->
+    <section class="section" id="courses" aria-labelledby="courses-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Our courses</p>
+          <h2 id="courses-title">Pick the path that fits your goal</h2>
+          <p>Three focused programs, each with clear milestones and regular feedback.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card course-card reveal">
+            <span class="tag">Levels A1 – B1</span>
+            <h3>English Foundations</h3>
+            <p>Build vocabulary, grammar and everyday speaking skills with lots of guided practice.</p>
+            <ul class="check-list">
+              <li>3 lessons per week</li>
+              <li>Groups of up to 8</li>
+              <li>Monthly progress check</li>
+            </ul>
+            <a class="card-link" href="#contact">Ask about this course <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="card course-card featured reveal" style="--delay:100ms">
+            <span class="tag tag-gold">Most popular</span>
+            <h3>IELTS Preparation</h3>
+            <p>Learn the exam format, practise all four skills and build strategies for test day.</p>
+            <ul class="check-list">
+              <li>Timed practice tests</li>
+              <li>Writing and speaking feedback</li>
+              <li>Levels B1 – C1</li>
+            </ul>
+            <a class="card-link" href="#contact">Ask about this course <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="card course-card reveal" style="--delay:200ms">
+            <span class="tag">Levels B1 – C1</span>
+            <h3>Business &amp; Speaking Club</h3>
+            <p>Practise meetings, presentations and emails, then keep fluent in relaxed discussion sessions.</p>
+            <ul class="check-list">
+              <li>Role-play and real tasks</li>
+              <li>Evening schedule</li>
+              <li>Small discussion groups</li>
+            </ul>
+            <a class="card-link" href="#contact">Ask about this course <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. WHY CHOOSE US ============ -->
+    <section class="section section-tint" id="why-us" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Why choose us</p>
+          <h2 id="why-title">Learning that feels personal</h2>
+          <p>We keep things simple: small classes, clear goals and plenty of speaking time.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature reveal">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <h3>Small groups</h3>
+            <p>With at most eight learners, every student speaks in every lesson.</p>
+          </div>
+
+          <div class="feature reveal" style="--delay:100ms">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </span>
+            <h3>Clear learning plan</h3>
+            <p>Each course has step-by-step goals so you always know what comes next.</p>
+          </div>
+
+          <div class="feature reveal" style="--delay:200ms">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </span>
+            <h3>Flexible schedule</h3>
+            <p>Morning, afternoon and evening groups, so lessons fit around work and school.</p>
+          </div>
+
+          <div class="feature reveal" style="--delay:300ms">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <h3>Regular feedback</h3>
+            <p>Teachers give friendly, specific advice so you can improve faster.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. TEACHERS ============ -->
+    <section class="section" id="teachers" aria-labelledby="teachers-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Meet the teachers</p>
+          <h2 id="teachers-title">Supportive, experienced and approachable</h2>
+          <p>Three fictional teacher profiles for this demo.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card teacher-card reveal">
+            <div class="avatar" aria-hidden="true">DK</div>
+            <h3>Dilnoza Karimova</h3>
+            <p class="role">Lead teacher, General English</p>
+            <p>Dilnoza loves helping beginners feel brave. Her lessons are full of games, short dialogues and encouragement.</p>
+          </article>
+
+          <article class="card teacher-card reveal" style="--delay:100ms">
+            <div class="avatar avatar-gold" aria-hidden="true">JW</div>
+            <h3>James Whitfield</h3>
+            <p class="role">IELTS specialist</p>
+            <p>James breaks the exam into simple steps and gives detailed writing and speaking feedback after every practice test.</p>
+          </article>
+
+          <article class="card teacher-card reveal" style="--delay:200ms">
+            <div class="avatar avatar-navy" aria-hidden="true">AR</div>
+            <h3>Aziz Rakhimov</h3>
+            <p class="role">Business English coach</p>
+            <p>Aziz focuses on real workplace situations: presentations, meetings and professional emails.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. TESTIMONIALS ============ -->
+    <section class="section section-tint" id="testimonials" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Student stories</p>
+          <h2 id="testimonials-title">What learners might say</h2>
+          <p class="note">These are fictional sample testimonials written for a portfolio demo. They are not from real students.</p>
+        </div>
+
+        <div class="card-grid">
+          <figure class="card quote-card reveal">
+            <blockquote>“I used to be shy about speaking. After a few weeks of small-group practice, I started joining conversations.”</blockquote>
+            <figcaption><strong>Madina S.</strong> <span>Sample learner · Foundations</span></figcaption>
+          </figure>
+
+          <figure class="card quote-card reveal" style="--delay:100ms">
+            <blockquote>“The practice tests and feedback made the exam feel much less scary. I knew exactly what to improve.”</blockquote>
+            <figcaption><strong>Jasur T.</strong> <span>Sample learner · IELTS Preparation</span></figcaption>
+          </figure>
+
+          <figure class="card quote-card reveal" style="--delay:200ms">
+            <blockquote>“Role-playing real meetings gave me the words I needed at work. The club is relaxed but useful.”</blockquote>
+            <figcaption><strong>Sevara N.</strong> <span>Sample learner · Business Club</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. CONTACT & REGISTRATION ============ -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+
+        <div class="contact-info reveal">
+          <p class="eyebrow">Contact &amp; registration</p>
+          <h2 id="contact-title">Book your free trial lesson</h2>
+          <p>Tell us a little about yourself and your goals. In a real center, a manager would call you to arrange a level check.</p>
+
+          <ul class="contact-list">
+            <li><strong>Address</strong> 14 Sample Street, Tashkent, Uzbekistan (fictional)</li>
+            <li><strong>Phone</strong> +998 00 000 00 00 (fictional)</li>
+            <li><strong>Email</strong> hello@lumora-demo.example</li>
+            <li><strong>Hours</strong> Mon – Sat, 09:00 – 20:00</li>
+          </ul>
+        </div>
+
+        <div class="form-wrap reveal" style="--delay:100ms">
+          <!-- Demo notice, always visible -->
+          <p class="demo-notice" role="note">
+            <strong>Demo form:</strong> this form does not send your information anywhere. There is no server or database behind it, so please do not enter real personal data.
+          </p>
+
+          <!-- "novalidate" turns off the browser's default bubbles so our own JavaScript messages are used -->
+          <form id="registration-form" novalidate>
+
+            <div class="form-row">
+              <label for="name">Full name <span class="required" aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" autocomplete="name"
+                     aria-required="true" aria-describedby="name-error" placeholder="e.g. Aziza Example">
+              <p class="field-error" id="name-error"></p>
+            </div>
+
+            <div class="form-row">
+              <label for="phone">Phone number <span class="required" aria-hidden="true">*</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel"
+                     aria-required="true" aria-describedby="phone-error" placeholder="+998 00 000 00 00">
+              <p class="field-error" id="phone-error"></p>
+            </div>
+
+            <div class="form-row">
+              <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email"
+                     aria-required="true" aria-describedby="email-error" placeholder="name@example.com">
+              <p class="field-error" id="email-error"></p>
+            </div>
+
+            <div class="form-row">
+              <label for="course">Course of interest <span class="required" aria-hidden="true">*</span></label>
+              <select id="course" name="course" aria-required="true" aria-describedby="course-error">
+                <option value="">Choose a course…</option>
+                <option value="foundations">English Foundations</option>
+                <option value="ielts">IELTS Preparation</option>
+                <option value="business">Business &amp; Speaking Club</option>
+              </select>
+              <p class="field-error" id="course-error"></p>
+            </div>
+
+            <div class="form-row">
+              <label for="message">Message <span class="optional">(optional)</span></label>
+              <textarea id="message" name="message" rows="3" placeholder="Tell us about your goals or preferred schedule"></textarea>
+            </div>
+
+            <div class="form-row form-check">
+              <input type="checkbox" id="consent" name="consent" aria-required="true" aria-describedby="consent-error">
+              <label for="consent">I understand this is a demo form and nothing will be sent. <span class="required" aria-hidden="true">*</span></label>
+              <p class="field-error" id="consent-error"></p>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Register (demo)</button>
+          </form>
+
+          <!-- Success message: hidden until the form is valid -->
+          <div class="success-message" id="success-message" role="status" tabindex="-1" hidden>
+            <strong>Thank you! Your demo registration looks good.</strong>
+            <p>This is only a demonstration. Your details were not saved or sent anywhere, because this website has no server.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ 8. FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="#top" class="logo logo-light" aria-label="Lumora English Center, back to top">
+          <span class="logo-mark" aria-hidden="true">L</span>
+          <span class="logo-text">Lumora <small>English Center</small></span>
+        </a>
+        <p class="footer-text">A fictional language center created as a beginner portfolio project.</p>
+      </div>
+
+      <div>
+        <h3>Contact (fictional)</h3>
+        <ul class="footer-list">
+          <li>14 Sample Street, Tashkent</li>
+          <li>+998 00 000 00 00</li>
+          <li>hello@lumora-demo.example</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Follow us (placeholders)</h3>
+        <ul class="social-list">
+          <li><a href="#" data-placeholder aria-label="Instagram (placeholder link)">Instagram</a></li>
+          <li><a href="#" data-placeholder aria-label="Telegram (placeholder link)">Telegram</a></li>
+          <li><a href="#" data-placeholder aria-label="YouTube (placeholder link)">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="year">2026</span> Lumora English Center (fictional). Portfolio demo project.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

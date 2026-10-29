@@ -1,0 +1,719 @@
+/* =====================================================
+   Lumora English Center — style.css
+   Written "mobile first": base styles are for phones,
+   and @media (min-width: ...) blocks add desktop changes.
+   ===================================================== */
+
+
+/* ---------- 1. DESIGN TOKENS (CSS variables) ----------
+   Change a colour here and it updates everywhere. */
+:root {
+  --cream: #fbf8f2;
+  --cream-dark: #f3eee3;
+  --white: #ffffff;
+  --navy: #12263f;
+  --navy-soft: #3b4d66;
+  --teal: #1b8a9e;
+  --teal-dark: #146b7b;
+  --gold: #e0a62b;
+  --error: #b3261e;
+  --success-bg: #e6f4ee;
+  --success-text: #14532d;
+
+  --font-heading: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius: 18px;
+  --shadow-sm: 0 2px 8px rgba(18, 38, 63, 0.06);
+  --shadow-md: 0 12px 30px rgba(18, 38, 63, 0.1);
+  --header-height: 72px;
+}
+
+
+/* ---------- 2. RESET & BASE ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;   /* padding no longer makes boxes wider */
+}
+
+html {
+  scroll-behavior: smooth;  /* smooth scrolling when clicking nav links */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--navy);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { max-width: 100%; display: block; }
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  margin: 0 0 0.6rem;
+}
+
+h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.01em; }
+h3 { font-size: 1.3rem; }
+
+p { margin: 0 0 1rem; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+a { color: var(--teal-dark); }
+
+/* Accessible focus ring: shown when using the keyboard */
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+
+/* ---------- 3. LAYOUT HELPERS ---------- */
+.container {
+  width: min(1120px, 100% - 2.5rem);  /* max 1120px, with side gutters */
+  margin-inline: auto;
+}
+
+.section {
+  padding: 5rem 0;
+  /* Stops the sticky header from covering a section title after scrolling */
+  scroll-margin-top: var(--header-height);
+}
+
+.section-tint { background: var(--cream-dark); }
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+}
+
+.note {
+  font-size: 0.95rem;
+  color: var(--navy-soft);
+  font-style: italic;
+}
+
+/* Visible only when focused via keyboard */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 8px;
+}
+.skip-link:focus { top: 1rem; }
+
+
+/* ---------- 4. BUTTONS ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.6rem;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease,
+              box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--teal);
+  color: var(--white);
+  box-shadow: 0 6px 16px rgba(27, 138, 158, 0.3);
+}
+.btn-primary:hover {
+  background: var(--teal-dark);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border-color: var(--navy);
+  color: var(--navy);
+  background: transparent;
+}
+.btn-outline:hover {
+  background: var(--navy);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-small { padding: 0.55rem 1.2rem; font-size: 0.95rem; }
+.btn-block { width: 100%; }
+
+
+/* ---------- 5. DEMO BANNER & HEADER ---------- */
+.demo-banner {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--white);
+  background: var(--navy);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(251, 248, 242, 0.92);
+  backdrop-filter: blur(10px);
+  transition: box-shadow 0.3s ease;
+}
+/* script.js adds this class after you scroll a little */
+.site-header.is-scrolled { box-shadow: var(--shadow-sm); }
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+}
+
+/* Logo */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--navy);
+}
+.logo-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--teal), var(--navy));
+  border-radius: 12px;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.logo-text small {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy-soft);
+}
+
+/* Hamburger button (mobile only) */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0.7rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.menu-toggle-bar {
+  width: 24px;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+/* Turns the three bars into an "X" when the menu is open */
+.menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile menu: hidden by default, shown when script.js adds .is-open */
+.nav-menu {
+  display: none;
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem 1.5rem;
+  background: var(--cream);
+  box-shadow: var(--shadow-md);
+}
+.nav-menu.is-open { display: flex; }
+
+.nav-link {
+  display: block;
+  padding: 0.7rem 0.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--navy);
+  border-radius: 8px;
+  transition: color 0.2s ease;
+}
+.nav-link:hover,
+.nav-link.is-active { color: var(--teal-dark); }
+
+/* The header is positioned so the mobile menu can sit below it */
+.site-header nav { position: static; }
+
+
+/* ---------- 6. HERO ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0 5rem;
+  background:
+    radial-gradient(circle at 85% 10%, rgba(27, 138, 158, 0.18), transparent 45%),
+    radial-gradient(circle at 5% 90%, rgba(224, 166, 43, 0.2), transparent 40%),
+    var(--cream);
+}
+
+.hero-grid {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-lead {
+  max-width: 540px;
+  font-size: 1.1rem;
+  color: var(--navy-soft);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin: 1.8rem 0 2.2rem;
+}
+
+.hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem 2rem;
+  font-size: 0.9rem;
+  color: var(--navy-soft);
+}
+.hero-facts strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+/* Hero illustration */
+.hero-visual {
+  position: relative;
+  min-height: 300px;
+}
+.bubble {
+  position: absolute;
+  max-width: 250px;
+  padding: 1rem 1.3rem;
+  font-weight: 500;
+  border-radius: 22px;
+  box-shadow: var(--shadow-md);
+  animation: float 6s ease-in-out infinite;
+}
+.bubble-one {
+  top: 10px;
+  left: 0;
+  color: var(--white);
+  background: var(--teal);
+  border-bottom-left-radius: 6px;
+}
+.bubble-two {
+  top: 110px;
+  right: 0;
+  background: var(--white);
+  border-bottom-right-radius: 6px;
+  animation-delay: -3s;
+}
+.hero-card {
+  position: absolute;
+  bottom: 0;
+  left: 12%;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.3rem;
+  background: var(--white);
+  border-left: 5px solid var(--gold);
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+}
+.hero-card strong { display: block; }
+.hero-card span:not(.hero-card-dot) { font-size: 0.85rem; color: var(--navy-soft); }
+.hero-card-dot {
+  width: 12px;
+  height: 12px;
+  background: #34c27a;
+  border-radius: 50%;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+
+/* ---------- 7. CARDS (courses, teachers, testimonials) ---------- */
+.card-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card {
+  padding: 2rem;
+  background: var(--white);
+  border: 1px solid rgba(18, 38, 63, 0.07);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Courses */
+.course-card { display: flex; flex-direction: column; }
+.course-card p { color: var(--navy-soft); }
+.course-card.featured { border: 2px solid var(--teal); }
+
+.tag {
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--teal-dark);
+  background: rgba(27, 138, 158, 0.12);
+  border-radius: 999px;
+}
+.tag-gold { color: #7a5200; background: rgba(224, 166, 43, 0.25); }
+
+.check-list { margin: 0.5rem 0 1.5rem; }
+.check-list li {
+  position: relative;
+  padding-left: 1.7rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+}
+.check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+.card-link {
+  margin-top: auto;           /* pushes the link to the bottom of the card */
+  font-weight: 600;
+  text-decoration: none;
+}
+.card-link span { display: inline-block; transition: transform 0.2s ease; }
+.card-link:hover span { transform: translateX(4px); }
+
+/* Teachers */
+.teacher-card { text-align: center; }
+.teacher-card p:last-child { color: var(--navy-soft); }
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 1.2rem;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--teal);
+  border-radius: 50%;
+}
+.avatar-gold { background: var(--gold); color: var(--navy); }
+.avatar-navy { background: var(--navy); }
+.role {
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--teal-dark);
+}
+
+/* Testimonials */
+.quote-card { margin: 0; display: flex; flex-direction: column; }
+.quote-card blockquote {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+.quote-card figcaption { margin-top: auto; font-size: 0.9rem; }
+.quote-card figcaption span { display: block; color: var(--navy-soft); }
+
+
+/* ---------- 8. WHY CHOOSE US ---------- */
+.feature-grid {
+  display: grid;
+  gap: 2rem;
+}
+.feature p { color: var(--navy-soft); }
+.icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 1rem;
+  color: var(--teal-dark);
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease;
+}
+.icon svg { width: 26px; height: 26px; }
+.feature:hover .icon { transform: rotate(-6deg) scale(1.08); }
+
+
+/* ---------- 9. CONTACT & FORM ---------- */
+.contact-grid {
+  display: grid;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-list { margin-top: 1.5rem; }
+.contact-list li {
+  margin-bottom: 0.9rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--gold);
+  color: var(--navy-soft);
+}
+.contact-list strong {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.form-wrap {
+  padding: 2rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+.demo-notice {
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #6b4a00;
+  background: #fff6dd;
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+}
+
+.form-row { margin-bottom: 1.2rem; }
+
+label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.required { color: var(--error); }
+.optional { font-weight: 400; color: var(--navy-soft); }
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font: inherit;
+  color: var(--navy);
+  background: var(--cream);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+textarea { resize: vertical; }
+
+input:hover, select:hover, textarea:hover { border-color: rgba(27, 138, 158, 0.4); }
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 1px;
+  background: var(--white);
+}
+
+/* script.js sets aria-invalid="true" on fields with a problem */
+[aria-invalid="true"] { border-color: var(--error); background: #fdf1f0; }
+
+.field-error {
+  min-height: 0;
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: var(--error);
+}
+.field-error:empty { display: none; }
+
+/* Checkbox row */
+.form-check {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 0.7rem;
+  align-items: start;
+}
+.form-check input { width: 20px; height: 20px; margin-top: 0.2rem; accent-color: var(--teal); }
+.form-check label { margin: 0; font-weight: 400; }
+.form-check .field-error { grid-column: 1 / -1; }
+
+.success-message {
+  margin-top: 1.5rem;
+  padding: 1.2rem 1.4rem;
+  color: var(--success-text);
+  background: var(--success-bg);
+  border-left: 5px solid #2f9e66;
+  border-radius: 12px;
+}
+.success-message p { margin: 0.4rem 0 0; }
+.success-message[hidden] { display: none; }
+
+
+/* ---------- 10. FOOTER ---------- */
+.site-footer {
+  padding: 4rem 0 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: var(--navy);
+}
+.site-footer h3 {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.logo-light { color: var(--white); }
+.logo-light .logo-text small { color: rgba(255, 255, 255, 0.65); }
+
+.footer-grid { display: grid; gap: 2.5rem; }
+.footer-text { margin-top: 1rem; max-width: 320px; }
+.footer-list li { margin-bottom: 0.4rem; }
+
+.social-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.social-list a {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.social-list a:hover { background: var(--teal); transform: translateY(-2px); }
+
+.footer-bottom {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+.footer-bottom p { margin: 0; }
+
+
+/* ---------- 11. SCROLL-REVEAL ANIMATION ----------
+   Elements are only hidden if JavaScript is running (.js class),
+   so the page never stays blank if the script fails. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--delay, 0ms);
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* ---------- 12. DESKTOP LAYOUT ---------- */
+@media (min-width: 700px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+}
+
+@media (min-width: 960px) {
+  .menu-toggle { display: none; }          /* no hamburger on desktop */
+
+  .nav-menu {
+    display: flex;                          /* menu is always visible */
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .nav-link { padding: 0.5rem 0.8rem; }
+
+  .hero { padding: 6rem 0 7rem; }
+  .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
+  .hero-visual { min-height: 380px; }
+
+  .card-grid { grid-template-columns: repeat(3, 1fr); }
+  .feature-grid { grid-template-columns: repeat(4, 1fr); }
+  .contact-grid { grid-template-columns: 0.9fr 1.1fr; }
+}
+
+
+/* ---------- 13. REDUCED MOTION ----------
+   If the visitor asked their device to limit animation,
+   we turn off scrolling animation, floating bubbles and fades. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
